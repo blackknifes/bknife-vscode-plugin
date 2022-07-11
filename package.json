@@ -1,0 +1,79 @@
+{
+	"name": "bknife-tool",
+	"displayName": "bknife-tool",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.69.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:bknife.orm.open",
+		"onCustomEditor:bknife.orm.editor"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "bknife.orm.open",
+				"title": "bknife: open orm view"
+			}
+		],
+		"customEditors": [
+			{
+				"viewType": "bknife.orm.editor",
+				"displayName": "orm editor",
+				"selector": [
+					{
+						"filenamePattern": "*.jsondbo"
+					}
+				],
+				"priority": "default"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run package",
+		"compile": "webpack --color --progress",
+		"watch": "cross-env mode=development webpack --watch --color --progress",
+		"watch:web": "cross-env mode=development webpack server -c build/webpack.web.js --color --progress",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"compile-tests": "tsc -p . --outDir out",
+		"watch-tests": "tsc -p . -w --outDir out",
+		"pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.18.6",
+		"@babel/preset-env": "^7.18.6",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.69.0",
+		"@typescript-eslint/eslint-plugin": "^5.30.0",
+		"@typescript-eslint/parser": "^5.30.0",
+		"@vscode/test-electron": "^2.1.5",
+		"babel-loader": "^8.2.5",
+		"cross-env": "^7.0.3",
+		"css-loader": "^6.7.1",
+		"eslint": "^8.18.0",
+		"glob": "^8.0.3",
+		"html-webpack-plugin": "^5.5.0",
+		"less": "^4.1.3",
+		"less-loader": "^11.0.0",
+		"mocha": "^10.0.0",
+		"style-loader": "^3.3.1",
+		"ts-loader": "^9.3.1",
+		"typescript": "^4.7.4",
+		"vue-loader": "^17.0.0",
+		"webpack": "^5.73.0",
+		"webpack-cli": "^4.10.0",
+		"webpack-dev-server": "^4.9.3"
+	},
+	"dependencies": {
+		"vue": "^3.2.36"
+	}
+}
