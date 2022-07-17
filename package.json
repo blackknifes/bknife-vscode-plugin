@@ -27,7 +27,7 @@
 				"displayName": "orm editor",
 				"selector": [
 					{
-						"filenamePattern": "*.jsondbo"
+						"filenamePattern": "*.dbo"
 					}
 				],
 				"priority": "default"

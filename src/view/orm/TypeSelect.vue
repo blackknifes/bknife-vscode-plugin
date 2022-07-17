@@ -28,10 +28,6 @@ export default {
 <style lang="less" scoped>
 .select {
     cursor: pointer;
-    color: var(--vscode-editor-foreground);
-    font-family: var(--vscode-font-family);
-    font-weight: var(--vscode-font-weight);
-    font-size: 20px;
     background: transparent;
 
     & * {

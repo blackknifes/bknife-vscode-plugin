@@ -1,6 +1,7 @@
 <template>
-    <div class="editable" @dblclick.stop.prevent="onEdit()">
-        <span class="label" :hidden="editting">{{ value }}</span>
+    <div class="editable">
+        <span class="label" :hidden="editting" @dblclick.stop="onEdit" >{{ value }}</span>
+        <span class="hidden-trigger" :hidden="editting || value.length != 0" @dblclick.stop="onEdit">输入内容</span>
         <input :type="type" ref="text" class="input" v-model="value" :hidden="!editting" @change="onChange()"
             @blur="onBlur()" @keydown.enter="onBlur()" />
     </div>
@@ -48,32 +49,29 @@ export default {
     display: inline-block;
     width: 100%;
     min-height: 27px;
-    cursor: text;
 }
 
 .label {
-    color: var(--vscode-editor-foreground);
-    font-family: var(--vscode-font-family);
-    font-weight: var(--vscode-font-weight);
-    font-size: 20px;
     text-align: center;
     width: 100%;
     padding: 0;
     margin: 0;
+    cursor: text;
 }
 
 .input {
     padding: 0;
     margin: 0;
-    color: var(--vscode-editor-foreground);
-    font-family: var(--vscode-font-family);
-    font-weight: var(--vscode-font-weight);
-    font-size: 20px;
     text-align: center;
     width: 100%;
     background: transparent;
     border: none;
     outline: none;
     text-decoration: underline;
+}
+
+.hidden-trigger
+{
+    cursor: text;
 }
 </style>

@@ -41,6 +41,7 @@
                         <td width="*">属性</td>
                         <td width="10%">所属表</td>
                         <td width="15%">注释</td>
+                        <td width="10%">操作</td>
                     </tr>
                     <tr v-for="column in table.columns" :key="column.name"
                         :hidden="table.collapse || tableClass.collapse">
@@ -69,6 +70,10 @@
                         </td>
                         <td>
                             <Editable v-model="column.comment" />
+                        </td>
+                        <td>
+                            <button style="margin-right: 15px;">插入</button>
+                            <button>删除</button>
                         </td>
                     </tr>
                 </template>
@@ -141,7 +146,6 @@ export default {
     border: 1px solid #CCC;
     border-collapse: collapse;
     text-align: center;
-    font-size: 20px;
     width: 100%;
 
     & th,
@@ -180,10 +184,6 @@ export default {
 }
 
 .attribute-td {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
     >* {
         margin-right: 10px;
     }
